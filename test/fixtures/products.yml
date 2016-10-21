@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category_id: MyString
+  description: MyText
+  product_model: MyString
+  maker_name: MyString
+  product_serial: MyString
+  quentity: MyString
+  stock_location: MyString
+  unit_value: MyString
+  unit_size: MyString
+  image: MyString
+  approved: false
+
+two:
+  name: MyString
+  category_id: MyString
+  description: MyText
+  product_model: MyString
+  maker_name: MyString
+  product_serial: MyString
+  quentity: MyString
+  stock_location: MyString
+  unit_value: MyString
+  unit_size: MyString
+  image: MyString
+  approved: false
