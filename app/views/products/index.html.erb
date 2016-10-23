@@ -6,7 +6,7 @@
 </style>
 <h1>Products Index</h1>
 <%= link_to "new", new_product_path %>
-<%= @products.each do |product| %>
+<% @products.each do |product| %>
     <table>
       <tr>
         <th>ID</th>
