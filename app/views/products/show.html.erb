@@ -1,0 +1,23 @@
+<h1>Product Details</h1>
+
+  <h3><%= @product.name %></h3>
+  <p>Posted <%= time_ago_in_words(@product.created_at) %> ago</p>
+  <p><%= @product.description %></p>
+  <p><%= @product.product_model %></p>
+  <p><%= @product.category.name %></p>
+  <p><%= @product.maker_name %></p>
+  <p><%= @product.product_serial %></p>
+  <p><%= @product.stock_location %></p>
+  <p><%= @product.quentity %></p>
+  <p><%= @product.unit_value %></p>
+  <%
+    p = @product.quentity.to_i
+    price = @product.unit_value.to_i
+    @total = p * price
+  %>
+  <p><%= @total.to_s %></p>
+  <p><%= image_tag @product.image.url(:thumb) %></p>
+  <p><%= @product.approved %></p>
+
+  <%= link_to "Edit", edit_product_path(@product) %> |
+  <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: 'Are you sure?!'} %>

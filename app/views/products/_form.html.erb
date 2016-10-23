@@ -1,0 +1,32 @@
+<%= form_for @product do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
+    <%= f.label :category_id %>
+    <%= f.select :category_id, options_for_select(@categories.collect { |c| [c['name'], c['id']] }) %><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+    <%= f.label :product_model %>
+    <%= f.text_field :product_model %><br>
+    <%= f.label :maker_name %>
+    <%= f.text_field :maker_name %><br>
+    <%= f.label :product_serial %>
+    <%= f.text_field :product_serial %><br>
+    <%= f.label :quentity %>
+    <%= f.text_field :quentity %><br>
+    <%= f.label :stock_location %>
+    <%= f.text_field :stock_location %><br>
+    <%= f.label :unit_value %>
+    <%= f.text_field :unit_value%><br>
+    <%= f.label :unit_size %>
+    <%= f.text_field :unit_size%><br>
+    <%= f.label :image %>
+    <%= f.file_field :image %><br>
+    <%= f.label :approved %> <br>
+    <%= f.label :approved, "accept" %>
+    <%= f.radio_button(:approved,"true") %>
+    <%= f.label :approved, "decline" %>
+    <%= f.radio_button(:approved,"false") %>
+    <%= f.submit %>
+
+<% end %>

@@ -6,13 +6,16 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Post.new
+    @products = Product.all
+    @product = Product.new
+    @categories = Category.all
   end
 
   def show
   end
 
   def edit
+    @categories = Category.all
   end
 
   def create
@@ -26,7 +29,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @post
+      redirect_to @product
     else
       render 'edit'
     end
@@ -39,12 +42,12 @@ class ProductsController < ApplicationController
 
   private
 
-  def find_post
+  def find_product
     @product = Product.find(params[:id])
   end
 
   def product_params
-    params.require(:@product).permit(:name, :category_id, :description, :product_model, :maker_name, :product_serial, :quentity, :stock_location, :unit_value, :unit_size, :image, :approved)
+    params.require(:product).permit(:name, :category_id, :description, :product_model, :maker_name, :product_serial, :quentity, :stock_location, :unit_value, :unit_size, :image, :approved)
   end
 end
 
