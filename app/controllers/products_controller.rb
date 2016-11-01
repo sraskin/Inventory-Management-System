@@ -1,8 +1,16 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
+  require 'date'
   def index
-    @products = Product.all
+    @products = Product.where("approved = 'true'").all
+    @date = params[:warranty_start] ? Date.parse(params[:warranty_start]) : Date.today
+  end
+
+  def approval
+    @approved_products = Product.all
+    @date = params[:warranty_start] ? Date.parse(params[:warranty_start]) : Date.today
   end
 
   def new
@@ -47,7 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :category_id, :description, :product_model, :maker_name, :product_serial, :quentity, :stock_location, :unit_value, :unit_size, :image, :approved)
+    params.require(:product).permit!
   end
 end
 

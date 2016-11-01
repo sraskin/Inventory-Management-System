@@ -1,5 +1,4 @@
 <%= form_for @product do |f| %>
-
     <%= f.label :name %>
     <%= f.text_field :name %> <br>
     <%= f.label :category_id %>
@@ -17,19 +16,23 @@
     <%= f.label :stock_location %>
     <%= f.text_field :stock_location %><br>
     <%= f.label :unit_value %>
-    <%= f.text_field :unit_value%><br>
+    <%= f.text_field :unit_value %><br>
     <%= f.label :unit_size %>
-    <%= f.text_field :unit_size%><br>
+    <%= f.text_field :unit_size %><br>
+    <%= f.label :warranty_start %>
+    <%= f.date_select :warranty_start, Date.today %><br>
+    <%= f.label :warranty_end %>
+    <%= f.datetime_select :warranty_end %><br>
     <%= f.label :image %>
     <%= f.file_field :image %><br>
-    <%= f.label :approved %> <br>
-    <%= f.label :approved, "accept" %>
-    <%= f.radio_button(:approved,"true") %>
-    <%= f.label :approved, "decline" %>
-    <%= f.radio_button(:approved,"false") %>
+    <% if current_user && current_user.admin? %>
+        <%= f.label :approved %> <br>
+        <%= f.label :approved, "accept" %>
+        <%= f.radio_button(:approved, "true") %>
+        <%= f.label :approved, "decline" %>
+        <%= f.radio_button(:approved, "false") %>
+    <% end %>
     <%= f.submit %>
-
 <% end %>
-
 <br>
 <%= link_to 'back', products_path %>
