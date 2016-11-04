@@ -21,8 +21,8 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
-#  warranty_start     :string
-#  warranty_end       :string
+#  warranty_start     :date
+#  warranty_end       :date
 #
 
 class Product < ActiveRecord::Base

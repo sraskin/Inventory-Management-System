@@ -30,7 +30,9 @@
         <th>Quantity</th>
         <th>Unit Value</th>
         <th>Total Value</th>
-        <th>Date</th>
+        <th>Warranty Start</th>
+        <th>Warranty End</th>
+        <th>remaining</th>
         <th>Image</th>
         <th>Approved Status</th>
         <th>Action</th>
@@ -53,7 +55,9 @@
               @total = p * price
             %>
             <td><%= @total.to_s %></td>
-            <td><%= @date.strftime("%B %Y") %></td>
+            <td><%= product.warranty_start.strftime("%d %B %Y") %></td>
+            <td><%= product.warranty_end.strftime("%d %B %Y") %></td>
+            <td>remaining <%= (product.warranty_end - Date.today).to_i %> days</td>
             <td><%= image_tag product.image.url(:thumb) %></td>
             <td><%= product.approved %></td>
             <td>
@@ -61,7 +65,7 @@
               <% if user_signed_in? %>
                   <%= link_to 'Edit', edit_product_path(product) %>
               <% end %>
-
+            </td>
             </td>
           </tr>
       <% end %>

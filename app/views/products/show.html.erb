@@ -17,8 +17,9 @@
 %>
 <p><%= @total.to_s %></p>
 <p><%= image_tag @product.image.url(:thumb) %></p>
-<p><%= @product.approved %></p>
-
+<% if current_user && current_user.admin? %>
+    <p><%= @product.approved %></p>
+<% end %>
 <%= link_to 'back', products_path %>
 <% if user_signed_in? %>
     <%= link_to "Edit", edit_product_path(@product) %>

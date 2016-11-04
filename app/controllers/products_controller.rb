@@ -5,12 +5,10 @@ class ProductsController < ApplicationController
   require 'date'
   def index
     @products = Product.where("approved = 'true'").all
-    @date = params[:warranty_start] ? Date.parse(params[:warranty_start]) : Date.today
   end
 
   def approval
     @approved_products = Product.all
-    @date = params[:warranty_start] ? Date.parse(params[:warranty_start]) : Date.today
   end
 
   def new
